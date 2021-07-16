@@ -1,9 +1,8 @@
+import PropTypes from "prop-types";
 import styles from "./Statistics.module.css";
+
 const Statistics = ({
   allFeedbacksObj,
-  //   good,
-  //   neutral,
-  //   bad,
   total,
   positivePercentage,
   stateKeysArr,
@@ -17,9 +16,18 @@ const Statistics = ({
           </span>
         </li>
       ))}
-      <li>Total:{total}</li>
-      <li>Positive feedback: {positivePercentage}%</li>
+      <li className={styles.listItem}>Total:{total}</li>
+      <li className={styles.listItem}>
+        Positive feedback: {positivePercentage}%
+      </li>
     </ul>
   );
+};
+
+Statistics.propTypes = {
+  allFeedbacksObj: PropTypes.object.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+  stateKeysArr: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
 export default Statistics;
